@@ -7,7 +7,8 @@ import "../styles/normalize.css";
 
 const { frontmatter } = Astro.props,
     title = frontmatter.title,
-    description = frontmatter.description;
+    description = frontmatter.description,
+    canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <Font
@@ -30,3 +31,10 @@ const { frontmatter } = Astro.props,
 <title>{title}</title>
 <meta name="title" content={title} />
 {description && <meta name="description" content={description} />}
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / social previews (LinkedIn, Slack, WhatsApp, etc.) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+{description && <meta property="og:description" content={description} />}

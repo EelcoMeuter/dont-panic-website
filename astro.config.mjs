@@ -1,12 +1,14 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 import lottie from "astro-integration-lottie";
-import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://dont-panic.eu",
+
     fonts: [{
         provider: fontProviders.local(),
         name: "Roboto",
@@ -20,10 +22,5 @@ export default defineConfig({
         }
     }],
 
-    i18n: {
-        locales: ["de", "en"],
-        defaultLocale: "en",
-    },
-
-    integrations: [react(), lottie(), mdx()]
+    integrations: [lottie(), mdx(), sitemap()]
 });

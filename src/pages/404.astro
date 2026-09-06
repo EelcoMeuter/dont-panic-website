@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Heading from "../components/Heading.astro";
+import Paragraph from "../components/Paragraph.astro";
+
+const frontmatter = {
+    title: "Don't Panic | Page Not Found",
+    description: "The page you're looking for doesn't exist.",
+};
+---
+
+<Layout {...{ frontmatter }}>
+    <Header />
+    <div class="not-found">
+        <Heading>Page not found</Heading>
+        <Paragraph>
+            The page you're looking for doesn't exist. Head back to <a href="/">the homepage</a>.
+        </Paragraph>
+    </div>
+</Layout>
+
+<style>
+    .not-found {
+        margin: 0 8% 3rem;
+        padding: 0 1rem;
+        min-height: 40vh;
+    }
+</style>
