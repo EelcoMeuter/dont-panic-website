@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import headshot from "../assets/headshot.png";
+---
+
+<article class="bio">
+	<Image
+		src={headshot}
+		alt="Eelco Meuter"
+		width={250}
+		height={250}
+		loading="lazy"
+		class="photo"
+	/>
+	<div class="text">
+		<h2>
+			Modern IT for people, not just <del data-hovertext="aliens"
+				>machines</del
+			>.
+		</h2>
+		<p>
+			Twenty years working on large, complex problems have taught me that
+			the real challenge is rarely the technology itself. The difficulty
+			usually lies in how people try to use it, rebuild it, or explain it
+			to their bosses or peers.
+		</p>
+		<p>
+			I've built a career around the feeling of not knowing where to
+			start. My name is Eelco. Nice to meet you.
+		</p>
+	</div>
+</article>
+
+<style>
+	.bio {
+		grid-column: 2 / span 9;
+		grid-row: 1;
+
+		display: flex;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	.photo {
+		flex: 0 0 auto;
+		width: 300px;
+		height: auto;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: 8px;
+		margin: 0 auto;
+	}
+	.text {
+		flex: 1 1 auto;
+	}
+
+	/* Below this width the text column grows taller than the photo's
+	   400px height, so stack the photo above the text instead and let
+	   the photo scale with the page width instead of staying fixed. */
+	@media screen and (max-width: 1200px) {
+		.bio {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.photo {
+			width: 50%;
+			height: auto;
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.bio {
+			grid-column: 1 / span 12;
+			grid-row: 1;
+			gap: 1.5rem;
+		}
+	}
+</style>

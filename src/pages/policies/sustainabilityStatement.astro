@@ -1,0 +1,26 @@
+---
+import { Content } from "../../content/SustainabilityStatement.mdx";
+import PolicyLayout from "../../layouts/PolicyLayout.astro";
+import Heading from "../../components/Heading.astro";
+import Heading2 from "../../components/Heading2.astro";
+import Paragraph from "../../components/Paragraph.astro";
+import OrderedList from "../../components/OrderedList.astro";
+import UnorderedList from "../../components/UnorderedList.astro";
+
+const frontmatter = {
+    title: "Dont't Panic | Privacy Policy",
+    description: "Privacy policy for Don't Panic Consultancy's website.",
+};
+---
+
+<PolicyLayout {...{ frontmatter }}>
+    <Content
+        components={{
+            h1: Heading,
+            h2: Heading2,
+            p: Paragraph,
+            ol: OrderedList,
+            ul: UnorderedList,
+        }}
+    />
+</PolicyLayout>

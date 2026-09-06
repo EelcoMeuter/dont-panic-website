@@ -1,0 +1,22 @@
+---
+import LottieAnimation from "astro-integration-lottie/Lottie.astro";
+---
+
+<div class="container">
+    <LottieAnimation src="falling.json" autoplay="visible" loop={false} />
+</div>
+
+<style>
+    .container {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+    }
+    @media only screen and (max-width: 600px) {
+        .container {
+            display: none;
+        }
+    }
+</style>

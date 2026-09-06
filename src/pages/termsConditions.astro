@@ -1,0 +1,95 @@
+---
+import { Content } from "../content/termsConditions.mdx";
+import Layout from "../layouts/Layout.astro";
+import svgLogo from "../assets/logo.svg";
+import { Image } from "astro:assets";
+import Heading from "../components/Heading.astro";
+import Heading2 from "../components/Heading2.astro";
+import Paragraph from "../components/Paragraph.astro";
+import OrderedList from "../components/OrderedList.astro";
+import UnorderedList from "../components/UnorderedList.astro";
+---
+
+<Layout
+    frontmatter={{
+        title: "Terms and Conditions",
+        description:
+            "Read the terms and conditions for using our website and services.",
+    }}
+>
+    <header class="header">
+        <a href="/">
+            <Image
+                src={svgLogo}
+                format="svg"
+                alt="don't panic logo"
+                width={300}
+                loading="lazy"
+            />
+        </a>
+        <div class="download-wrapper">
+            <a
+                class="download-link"
+                rel="nofollow, noindex"
+                download
+                href="/dont-panic-terms_conditions-jan26.pdf">Download</a
+            >
+        </div>
+    </header>
+    <div class="content">
+        <Content
+            components={{
+                h1: Heading,
+                h2: Heading2,
+                p: Paragraph,
+                ol: OrderedList,
+                ul: UnorderedList,
+            }}
+        />
+    </div>
+</Layout>
+
+<style>
+    .content {
+        margin: 1.5rem 8%;
+        padding: 0 1rem;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        animation: border 1s ease-in-out forwards;
+        animation-timeline: view(auto 100%);
+    }
+
+    .download-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 0.875rem;
+        gap: 5px;
+        width: 100px;
+    }
+
+    .download-link {
+        color: #fff;
+        background: #b31b1b;
+        padding: 10px 15px;
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+    @keyframes border {
+        1% {
+            border-bottom: #b31b1b 2px solid;
+        }
+        100% {
+            border-bottom: #b31b1b 2px solid;
+        }
+    }
+</style>

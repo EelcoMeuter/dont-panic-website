@@ -1,0 +1,22 @@
+{
+  "name": "don't panic",
+  "type": "website",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.8",
+    "@astrojs/react": "^6.0.4",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "astro": "^7.2.9",
+    "astro-integration-lottie": "^0.3.2",
+    "lottie-web": "^5.13.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}

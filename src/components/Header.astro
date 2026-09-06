@@ -1,0 +1,246 @@
+---
+import svgLogo from "../assets/logo.svg";
+import { Image } from "astro:assets";
+
+const { animate = false } = Astro.props;
+const hasSidebar = Astro.slots.has("sidebar");
+---
+
+<header class:list={["header-top", { animate }]}>
+    <a href="/" class="logo-link">
+        <Image
+            src={svgLogo}
+            format="svg"
+            alt="don't panic logo"
+            width={300}
+            loading="lazy"
+        />
+    </a>
+
+    <nav class="primary-nav">
+        <a href="/#about">About</a>
+        <a
+            href="https://eelcomeuter.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Insights
+        </a>
+        <a href="/#contact">Contact</a>
+
+        {
+            hasSidebar && (
+                <details class="policies-fold">
+                    <summary>Policies</summary>
+                    <nav class="policies-fold-nav">
+                        <slot name="sidebar" />
+                    </nav>
+                </details>
+            )
+        }
+    </nav>
+</header>
+
+{
+    hasSidebar && (
+        <nav class="sidebar-nav">
+            <slot name="sidebar" />
+        </nav>
+    )
+}
+
+<style>
+    .header-top {
+        margin: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .header-top.animate {
+        animation: appear 6s;
+    }
+
+    @keyframes appear {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .primary-nav {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .primary-nav a {
+        position: relative;
+    }
+
+    .primary-nav a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: #b31b1b;
+        bottom: -4px;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .primary-nav a:hover:before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+
+    .policies-fold {
+        display: none;
+    }
+
+    .policies-fold summary {
+        cursor: pointer;
+        color: #333;
+        font-size: 1.1rem;
+        display: block;
+        list-style: none;
+    }
+
+    .policies-fold summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .policies-fold[open] summary {
+        color: #ccc;
+    }
+
+    .policies-fold-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 2px;
+        padding-left: 1rem;
+    }
+
+    .policies-fold-nav :global(a) {
+        position: relative;
+        width: fit-content;
+    }
+
+    .policies-fold-nav :global(a):before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: #b31b1b;
+        bottom: -4px;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .policies-fold-nav :global(a):hover:before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+
+    .policies-fold-nav :global(a[aria-current="page"]) {
+        color: #ccc;
+        font-weight: 700;
+    }
+
+    .policies-fold-nav :global(a[aria-current="page"]):hover:before {
+        transform: scaleX(0);
+    }
+
+    .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 300px;
+        margin: 0 35px 2rem;
+    }
+
+    .sidebar-nav :global(a) {
+        position: relative;
+        width: fit-content;
+    }
+
+    .sidebar-nav :global(a):before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: #b31b1b;
+        bottom: -4px;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-nav :global(a):hover:before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+
+    .sidebar-nav :global(a[aria-current="page"]) {
+        color: #ccc;
+        font-weight: 700;
+    }
+
+    .sidebar-nav :global(a[aria-current="page"]):hover:before {
+        transform: scaleX(0);
+    }
+
+    @media screen and (max-width: 900px) {
+        .primary-nav {
+            align-self: flex-end;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: clamp(0.85rem, 2.2vw + 0.4rem, 1.1rem);
+        }
+
+        .primary-nav a {
+            margin-right: 0;
+        }
+
+        .policies-fold {
+            display: block;
+            position: relative;
+            width: 100%;
+        }
+
+        .policies-fold summary {
+            text-align: right;
+        }
+
+        .policies-fold-nav {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: max-content;
+            align-items: flex-end;
+            background: #f5f5f7;
+            padding: 0.75rem 20px 0.75rem 1.5rem;
+            z-index: 20;
+        }
+
+        .policies-fold-nav :global(a) {
+            margin-right: 0;
+        }
+
+        .sidebar-nav {
+            display: none;
+        }
+    }
+</style>

@@ -1,0 +1,72 @@
+---
+import Falling from "./Falling.astro";
+import Scroll from "./Scroll.astro";
+import Header from "./Header.astro";
+---
+
+<section class="first">
+	<Header animate />
+
+	<span class="slogan-small">(Together, we)</span>
+	<h1 class="slogan">transform challenges into possibilities</h1>
+	<Falling class="fallingLetters" />
+	<div class="scroll-container">
+		<Scroll />
+	</div>
+</section>
+
+<style>
+	.first {
+		border: none;
+	}
+
+	:global(.header-top) {
+		grid-column: 1 / span 12;
+	}
+
+	.slogan {
+		display: grid;
+		grid-column: 7 / span 6;
+		margin-right: 5rem;
+		font-weight: 300;
+		line-height: 0.95;
+		letter-spacing: -0.03em;
+		font-size: 4.5rem;
+		color: #1a1a1a;
+	}
+
+	.slogan-small {
+		display: grid;
+		grid-column: 1 / span 6;
+		width: 100%;
+		text-align: right;
+		padding-top: 2rem;
+		font-weight: 400;
+		color: #b31b1b;
+	}
+
+	.slogan,
+	.slogan-small {
+		animation: appear 6s;
+	}
+
+	@keyframes appear {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.slogan-small {
+			display: none;
+		}
+		.slogan {
+			grid-column: 1 / span 12;
+			margin: 10%;
+			font-size: 3.5rem;
+		}
+	}
+</style>

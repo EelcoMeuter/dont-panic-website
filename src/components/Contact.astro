@@ -1,0 +1,88 @@
+---
+import Coffee from "./Coffee.astro";
+---
+
+<section id="contact" class="last">
+	<a href="#" class="top">top</a>
+	<Coffee />
+	<article class="contact">
+		<p>Curious? Ready to clear the air?</p>
+		<p>
+			I would love to hear from you. Progress starts with just a
+			conversation about your goals.
+		</p>
+
+		<a
+			class="email"
+			id="email-conversion"
+			rel="nofollow, noindex"
+			href="no-bots/"
+		>
+			let's chat</a
+		>
+	</article>
+</section>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const a = document.getElementById("email-conversion");
+
+		if (a) {
+			const href = a.getAttribute("href");
+			if (href) {
+				a.setAttribute(
+					"href",
+					href
+						.replace("-", "talk@")
+						.replaceAll("-", ".")
+						.replace("bots", "dont-")
+						.replace("/", "panic.eu")
+						.replace("no", "mailto:lets"),
+				);
+			}
+		}
+	});
+</script>
+
+<style>
+	.last {
+		animation: none;
+	}
+
+	.contact {
+		display: grid;
+		grid-column: 7 / span 6;
+		font-size: 1.5rem;
+
+		.email {
+			box-shadow: inset 0 0 0 0 #b31b1b;
+			color: #b31b1b;
+			margin: 0 -15px;
+			padding: 0 15px;
+			transition:
+				color 0.3s ease-in-out,
+				box-shadow 0.3s ease-in-out;
+			text-decoration: #1a1a1a underline double 1.5px;
+			font-size: 40px;
+			width: 190px;
+		}
+		.email:hover {
+			color: #fff;
+			box-shadow: inset 190px 0 0 0 #b31b1b;
+			text-decoration: none;
+		}
+
+		h2 {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+			color: #b31b1b;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.contact {
+			grid-column: 1 / span 12;
+			margin: 10%;
+		}
+	}
+</style>

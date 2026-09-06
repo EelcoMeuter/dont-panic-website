@@ -1,0 +1,28 @@
+<ul>
+    <slot />
+</ul>
+
+<style>
+    ul {
+        margin-left: 0
+        color: var(--color-text);
+        font-size: 1.125rem;
+        line-height: 1.6;
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            margin-left: 0;
+            p {
+                margin: 0;
+            }
+        }
+        li::before {
+            content: "-";
+            color: var(--color-accent);
+            display: inline-block;
+            width: 3rem;
+            margin-left: -3rem;
+        }
+    }
+</style>

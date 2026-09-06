@@ -1,0 +1,96 @@
+---
+import Scroll from "./Scroll.astro";
+import Bio from "./Bio.astro";
+---
+
+<section id="about">
+	<a href="#" class="top">top</a>
+	<Bio />
+	<article class="about">
+		<p>
+			We all lose sight of the opportunity sometimes. Thoughts and
+			discussions spiral through a maze of competing solutions,
+			requirements, and constraints.
+		</p>
+		<p>
+			The day-to-day likely prevails, and short-term wins are celebrated.
+			Systems become legendary. Everyone knows them by name; many regard
+			them as heritage; few know how they work.
+		</p>
+		<p>
+			That's where I step in, quietly and focused. You'll notice the
+			results. Here is how.
+		</p>
+	</article>
+
+	<div class="pillars">
+		<article class="pillar_1">
+			<h2><span>01.</span>Listen</h2>
+			<p>
+				Innovation starts with understanding your team, not just your
+				tech stack.
+			</p>
+		</article>
+		<article class="pillar_2">
+			<h2><span>02.</span>Simplify</h2>
+			<p>
+				Together, we strip away the unnecessary to create systems that
+				feel natural to use.
+			</p>
+		</article>
+		<article class="pillar_3">
+			<h2><span>03.</span>Deliver</h2>
+			<p>
+				Real-world impact is the only metric that matters for long-term
+				success.
+			</p>
+		</article>
+	</div>
+	<div class="scroll-container">
+		<Scroll />
+	</div>
+</section>
+
+<style>
+	.about {
+		grid-column: 2 / span 9;
+		grid-row: 2;
+		padding-top: 0;
+	}
+
+	.pillars {
+		grid-column: 2 / span 9;
+		grid-row: 3;
+
+		display: flex;
+		justify-content: center;
+		gap: 4rem;
+	}
+
+	.pillar_1,
+	.pillar_2,
+	.pillar_3 {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	/* Below this width the pillar columns get too narrow for their
+	   titles, forcing a mid-word break, so stack the pillars instead. */
+	@media screen and (max-width: 1153px) {
+		.pillars {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 1.5rem;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.about {
+			grid-column: 1 / span 12;
+		}
+
+		.pillars {
+			grid-column: 1 / span 12;
+		}
+	}
+</style>

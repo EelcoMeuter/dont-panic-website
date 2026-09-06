@@ -1,0 +1,54 @@
+---
+import PolicyLayout from "../../layouts/PolicyLayout.astro";
+import Paragraph from "../../components/Paragraph.astro";
+
+const frontmatter = {
+    title: "Dont't Panic | Legal Notice",
+    description:
+        "Legal notice and contact information for Don't Panic Consultancy.",
+};
+---
+
+<PolicyLayout {...{ frontmatter }}>
+    <h1>Legal Notice</h1>
+    <Paragraph>
+        <address>
+            Don't Panic Consultancy<br />
+            <span style="display:none">no</span>E<span style="display:none"
+                >bots</span
+            >. C. Meu<span style="display:none">please</span>ter <br />
+            Dennekamp 9<br />
+            47559 Kranenburg<br />
+            Germany<br /><br />
+            email: lets<span style="display:none">no</span>talk<span
+                style="display:none">spam</span
+            >@dont-<span style="display:none">bots</span>panic<span
+                style="display:none">please</span
+            >.eu<br />
+        </address>
+    </Paragraph>
+    <Paragraph>
+        Company ID: <span style="display:none">again</span>DE<span
+            style="display:none">no</span
+        >4589<span style="display:none">bots</span>957<span
+            style="display:none">please</span
+        >39
+    </Paragraph>
+    <Paragraph>
+        This Legal Notice complies with the German laws under § 5 DDG.
+    </Paragraph>
+</PolicyLayout>
+
+<style>
+    h1 {
+        font-size: 2rem;
+        color: #b31b1b;
+    }
+
+    address {
+        font-style: normal;
+        line-height: 1.6;
+        margin-top: 1rem;
+        font-size: 1.125rem;
+    }
+</style>

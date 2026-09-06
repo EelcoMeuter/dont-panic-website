@@ -1,0 +1,48 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class={className + " scroll"} {...rest}>
+    scroll
+    <span class="bar"></span>
+</div>
+
+<style>
+    .scroll {
+        align-items: center;
+        position: absolute;
+        right: -4rem;
+        bottom: 10rem;
+        display: flex;
+        font-size: 1.1rem;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        line-height: 1;
+        color: #ccc;
+        transform: rotate(90deg);
+    }
+
+    .bar {
+        display: inline-block;
+        overflow: hidden;
+        width: 7rem;
+    }
+
+    .bar::before {
+        animation: animate 2.5s ease-in-out 0s infinite normal both;
+        background-color: #880000;
+        content: "";
+        display: block;
+        height: 1px;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+</style>

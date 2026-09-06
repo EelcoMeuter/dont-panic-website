@@ -1,0 +1,82 @@
+<footer>
+	<p class="copyright">
+		<span class="short">© 2026</span><span class="full"
+			>&nbsp;Don't Panic Consultancy. All rights reserved.</span
+		>
+	</p>
+	<nav>
+		<a
+			href="https://www.linkedin.com/in/meuter/"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			LinkedIn
+		</a>
+		<a href="/policies/legalNotice/index.html">Legal & ESG</a>
+		<a href="/termsConditions/index.html">Terms & Conditions</a>
+	</nav>
+</footer>
+
+<style>
+	footer {
+		position: relative;
+		display: flex;
+		padding: 20px;
+		min-height: 100px;
+		color: white;
+		justify-content: space-between;
+		align-items: center;
+		background: #1a1a1a;
+		width: 100%;
+		border-top: #b31b1b 4px solid;
+		gap: 1rem;
+	}
+
+	.copyright {
+		margin: 0;
+	}
+
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		gap: 0.5rem 2rem;
+	}
+
+	nav a {
+		text-decoration: none;
+		font-size: 0.9rem;
+		color: white;
+	}
+
+	nav a:visited {
+		color: white;
+	}
+
+	/* Below this width the copyright line and the nav links no longer
+	   fit on one row and start wrapping into each other, so stack the
+	   copyright above the nav instead, both left-aligned. */
+	@media screen and (max-width: 844px) {
+		footer {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		nav {
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			gap: 0.5rem;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		nav {
+			order: -1;
+		}
+
+		.copyright .full {
+			display: none;
+		}
+	}
+</style>

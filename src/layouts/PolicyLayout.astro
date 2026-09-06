@@ -1,0 +1,69 @@
+---
+import Layout from "./Layout.astro";
+import Header from "../components/Header.astro";
+import PolicyLinks from "../components/PolicyLinks.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout {...{ frontmatter }}>
+    <div class="policy-page">
+        <Header>
+            <PolicyLinks slot="sidebar" />
+        </Header>
+        <div class="content">
+            <slot />
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .policy-page {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+    }
+
+    .policy-page > :global(.header-top) {
+        grid-column: 1 / -1;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: #fff;
+        animation: border 1s ease-in-out forwards;
+        animation-timeline: view(auto 100%);
+    }
+
+    @keyframes border {
+        1% {
+            border-bottom: #b31b1b 2px solid;
+        }
+        100% {
+            border-bottom: #b31b1b 2px solid;
+        }
+    }
+
+    .policy-page > :global(.sidebar-nav) {
+        grid-column: 1;
+    }
+
+    .content {
+        grid-column: 2;
+        margin: 0 8% 1.5rem;
+        padding: 0 1rem;
+    }
+
+    /* Align the first heading with the first sidebar nav item. */
+    .content :global(h1:first-child) {
+        margin-top: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+        .policy-page {
+            grid-template-columns: 1fr;
+        }
+
+        .content {
+            grid-column: 1;
+        }
+    }
+</style>
