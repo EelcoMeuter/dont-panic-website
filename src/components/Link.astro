@@ -1,0 +1,22 @@
+---
+const {
+    href,
+    target = "_blank",
+    rel = "noopener noreferrer",
+    ...rest
+} = Astro.props;
+---
+
+<a href={href} target={target} rel={rel} {...rest}>
+    <slot />
+</a>
+
+<style>
+    a {
+        margin-right: 0;
+        text-decoration: underline;
+    }
+    a:hover {
+        cursor: pointer;
+    }
+</style>

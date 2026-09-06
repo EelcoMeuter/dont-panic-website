@@ -1,6 +1,6 @@
 {
   "name": "don't panic",
-  "type": "website",
+  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",

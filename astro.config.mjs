@@ -4,6 +4,7 @@ import lottie from "astro-integration-lottie";
 import sitemap from "@astrojs/sitemap";
 
 import mdx from "@astrojs/mdx";
+import { withIndexHtml } from "./src/utils/withIndexHtml.ts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,5 +23,10 @@ export default defineConfig({
         }
     }],
 
-    integrations: [lottie(), mdx(), sitemap()]
+    integrations: [lottie(), mdx(), sitemap({
+        serialize(item) {
+            item.url = withIndexHtml(item.url);
+            return item;
+        },
+    })]
 });

@@ -4,12 +4,14 @@ import { Font } from "astro:assets";
 // Import the normalize.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "../styles/normalize.css";
+import { withIndexHtml } from "../utils/withIndexHtml";
 
 const { frontmatter, structuredData } = Astro.props,
     title = frontmatter.title,
     description = frontmatter.description,
     image = frontmatter.image,
-    canonicalURL = new URL(Astro.url.pathname, Astro.site);
+    noindex = frontmatter.noindex,
+    canonicalURL = withIndexHtml(new URL(Astro.url.pathname, Astro.site).toString());
 ---
 
 <Font
@@ -32,13 +34,21 @@ const { frontmatter, structuredData } = Astro.props,
 <title>{title}</title>
 <meta name="title" content={title} />
 {description && <meta name="description" content={description} />}
-<link rel="canonical" href={canonicalURL} />
+{noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+) : (
+    <link rel="canonical" href={canonicalURL} />
+)}
 
 <!-- Open Graph / social previews (LinkedIn, Slack, WhatsApp, etc.) -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title} />
-{description && <meta property="og:description" content={description} />}
+{!noindex && (
+    <>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        {description && <meta property="og:description" content={description} />}
+    </>
+)}
 {image && (
     <>
         <meta property="og:image" content={image} />
