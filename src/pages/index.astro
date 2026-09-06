@@ -8,9 +8,25 @@ const frontmatter = {
 	title: "Don't Panic Consultancy",
 	description: "Transforming challenges into possibilities",
 };
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	name: "Don't Panic Consultancy",
+	url: "https://dont-panic.eu",
+	logo: "https://dont-panic.eu/icon-512.png",
+	description:
+		"Boutique IT consultancy specializing in digital transformation, (enterprise) architecture, business strategy, and innovation.",
+	founder: {
+		"@type": "Person",
+		name: "Eelco Meuter",
+		sameAs: "https://www.linkedin.com/in/meuter/",
+	},
+	sameAs: ["https://www.linkedin.com/in/meuter/"],
+};
 ---
 
-<Layout {...{ frontmatter }}>
+<Layout {...{ frontmatter, structuredData }}>
 	<Hero />
 	<About />
 	<Contact />

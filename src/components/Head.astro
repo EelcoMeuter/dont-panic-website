@@ -5,7 +5,7 @@ import { Font } from "astro:assets";
 // all pages through the use of the <BaseHead /> component.
 import "../styles/normalize.css";
 
-const { frontmatter } = Astro.props,
+const { frontmatter, structuredData } = Astro.props,
     title = frontmatter.title,
     description = frontmatter.description,
     canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -38,3 +38,7 @@ const { frontmatter } = Astro.props,
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 {description && <meta property="og:description" content={description} />}
+
+{structuredData && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+)}
