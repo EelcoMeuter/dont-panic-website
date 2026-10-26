@@ -12,12 +12,6 @@ updates:
           - "astro"
           - "@astrojs/*"
           - "astro-*"
-      react:
-        patterns:
-          - "react"
-          - "react-dom"
-          - "@types/react"
-          - "@types/react-dom"
       dev-dependencies:
         dependency-type: "development"
     commit-message:
